@@ -1,0 +1,32 @@
+"use client";
+
+import Lenis from "lenis";
+import { ReactNode, useEffect } from "react";
+
+export function LenisProvider({ children }: { children: ReactNode }) {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      smoothWheel: true,
+      touchMultiplier: 2,
+    });
+
+    let frameId: number;
+
+    function raf(time: number) {
+      lenis.raf(time);
+      frameId = requestAnimationFrame(raf);
+    }
+
+    frameId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      lenis.destroy();
+    };
+  }, []);
+
+  return <>{children}</>;
+}

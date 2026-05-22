@@ -1,26 +1,150 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─── Reset e Base ─────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  html {
+    background-color: #080808;
+    color: #f0f0f0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: auto; /* Lenis cuida do scroll */
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    min-height: 100dvh;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Scrollbar fina e elegante */
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e63232;
+  }
+
+  /* Seleção de texto */
+  ::selection {
+    background: rgba(230, 50, 50, 0.25);
+    color: #f0f0f0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Utilities customizadas ───────────────────── */
+@layer utilities {
+  /* Gradientes de texto */
+  .text-gradient {
+    background: linear-gradient(135deg, #f0f0f0 0%, #666 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-red {
+    background: linear-gradient(135deg, #e63232 0%, #ff8080 60%, #ffaaaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-subtle {
+    background: linear-gradient(135deg, #f0f0f0 0%, #999 50%, #555 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effects */
+  .glow-red {
+    box-shadow:
+      0 0 40px rgba(230, 50, 50, 0.2),
+      0 0 80px rgba(230, 50, 50, 0.08),
+      0 0 160px rgba(230, 50, 50, 0.04);
+  }
+
+  .glow-red-strong {
+    box-shadow:
+      0 0 20px rgba(230, 50, 50, 0.4),
+      0 0 60px rgba(230, 50, 50, 0.2),
+      0 0 120px rgba(230, 50, 50, 0.1);
+  }
+
+  .glow-white {
+    box-shadow:
+      0 0 40px rgba(255, 255, 255, 0.06),
+      0 0 80px rgba(255, 255, 255, 0.02);
+  }
+
+  /* Bordas com gradiente */
+  .border-gradient {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(#111111, #111111) padding-box,
+      linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.02)
+        )
+        border-box;
+  }
+
+  .border-gradient-red {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(#111111, #111111) padding-box,
+      linear-gradient(135deg, rgba(230, 50, 50, 0.4), rgba(230, 50, 50, 0.05))
+        border-box;
+  }
+
+  /* Texture de noise sutil */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.35;
+  }
+
+  /* Grid decorativo */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Container padrão do projeto */
+  .container-site {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1.5rem, 5vw, 4rem);
+    padding-right: clamp(1.5rem, 5vw, 4rem);
+  }
 }
