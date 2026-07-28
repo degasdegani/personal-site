@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 import type { Project } from "@/components/projects/data";
@@ -14,7 +15,12 @@ interface ProjectDetailProps {
 }
 
 export function ProjectDetail({ project, heroVisual }: ProjectDetailProps) {
-  const placeholderCount = project.screenshots;
+  const screenshotUrls = Array.isArray(project.screenshots)
+    ? project.screenshots
+    : null;
+  const placeholderCount = Array.isArray(project.screenshots)
+    ? 0
+    : project.screenshots;
 
   return (
     <div className="relative">
@@ -167,15 +173,29 @@ export function ProjectDetail({ project, heroVisual }: ProjectDetailProps) {
                 <div className="h-full flex items-center">{heroVisual}</div>
               </RevealBlock>
             )}
-            {Array.from({ length: placeholderCount }).map((_, i) => (
-              <RevealBlock key={i} animation="scaleIn" delay={i * 0.05}>
-                <div className="aspect-video rounded-2xl border border-dashed border-border flex items-center justify-center bg-surface">
-                  <p className="text-label text-muted uppercase tracking-widest">
-                    Screenshot em breve
-                  </p>
-                </div>
-              </RevealBlock>
-            ))}
+            {screenshotUrls
+              ? screenshotUrls.map((url, i) => (
+                  <RevealBlock key={url} animation="scaleIn" delay={i * 0.05}>
+                    <div className="relative aspect-video rounded-2xl border border-border overflow-hidden bg-surface">
+                      <Image
+                        src={url}
+                        alt={`${project.name} — captura de tela ${i + 1}`}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                      />
+                    </div>
+                  </RevealBlock>
+                ))
+              : Array.from({ length: placeholderCount }).map((_, i) => (
+                  <RevealBlock key={i} animation="scaleIn" delay={i * 0.05}>
+                    <div className="aspect-video rounded-2xl border border-dashed border-border flex items-center justify-center bg-surface">
+                      <p className="text-label text-muted uppercase tracking-widest">
+                        Screenshot em breve
+                      </p>
+                    </div>
+                  </RevealBlock>
+                ))}
           </div>
         </RevealBlock>
       </div>

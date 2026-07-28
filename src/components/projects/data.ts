@@ -12,7 +12,7 @@ export interface Project {
     problem: string;
     solution: string;
   };
-  screenshots: number;
+  screenshots: number | string[];
 }
 
 export const projects: Project[] = [
@@ -132,7 +132,14 @@ export const projects: Project[] = [
       solution:
         "Separação estrita entre domínio, aplicação e infraestrutura na Clean Architecture, com Entity Framework Core e SQL Server isolados na camada de infraestrutura e execução containerizada via Docker, sem vazar detalhes de persistência para o domínio.",
     },
-    screenshots: 2,
+    screenshots: [
+      "https://github.com/degasdegani/OrderFlow/raw/main/docs/screenshots/13-dashboard.png",
+      "https://github.com/degasdegani/OrderFlow/raw/main/docs/screenshots/01-auth.png",
+      "https://github.com/degasdegani/OrderFlow/raw/main/docs/screenshots/09-order-create.png",
+      "https://github.com/degasdegani/OrderFlow/raw/main/docs/screenshots/07-products-list.png",
+      "https://github.com/degasdegani/OrderFlow/raw/main/docs/screenshots/08-customers-list.png",
+      "https://github.com/degasdegani/OrderFlow/raw/main/docs/screenshots/12-stock-movement.png",
+    ],
   },
   {
     slug: "invoicepro",
@@ -156,7 +163,12 @@ export const projects: Project[] = [
       solution:
         "O ciclo completo foi modelado como um fluxo de estados dentro do mesmo domínio MVC, com cada etapa (orçamento → aprovação → faturamento → recebimento) dependendo do estado anterior, em vez de telas independentes sem relação entre si.",
     },
-    screenshots: 2,
+    screenshots: [
+      "https://github.com/degasdegani/InvoicePro/raw/main/docs/images/01-dashboard.png",
+      "https://github.com/degasdegani/InvoicePro/raw/main/docs/images/03-orcamentos.png",
+      "https://github.com/degasdegani/InvoicePro/raw/main/docs/images/05-faturas.png",
+      "https://github.com/degasdegani/InvoicePro/raw/main/docs/images/06-detalhes-fatura.png",
+    ],
   },
 ];
 
