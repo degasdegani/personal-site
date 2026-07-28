@@ -18,7 +18,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "livo",
-    name: "Livo",
+    name: "Livo Barber",
     tagline:
       "SaaS multi-tenant de agendamento e gestão financeira para barbearias.",
     cardStack: ["Next.js", "PostgreSQL", "Prisma"],
