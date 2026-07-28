@@ -79,14 +79,9 @@ export function About() {
             {/* Headline com SplitText */}
             <h2 className="text-display-lg font-bold mb-8 leading-tight">
               <SplitText
-                text="Nove anos em vendas e gestão comercial."
+                text="Desenvolvedor Full Stack."
                 className="text-gradient block"
                 delay={0.1}
-              />
-              <SplitText
-                text="Hoje, desenvolvimento full stack em produção."
-                className="text-gradient-red block"
-                delay={0.3}
               />
             </h2>
 
@@ -109,21 +104,11 @@ export function About() {
               </p>
             </RevealBlock>
 
-            <RevealBlock animation="fadeUp" delay={0.3} className="mb-6">
+            <RevealBlock animation="fadeUp" delay={0.3}>
               <p className="text-body-md text-subtle leading-relaxed">
-                Antes de me dedicar integralmente ao desenvolvimento, atuei
-                nove anos em vendas, marketing digital e gestão de carteira de
-                clientes B2B — incluindo mais de 200 clientes ativos geridos
-                em implantação e suporte técnico na Stone.
-              </p>
-            </RevealBlock>
-
-            <RevealBlock animation="fadeUp" delay={0.4}>
-              <p className="text-body-md text-subtle leading-relaxed">
-                Essa trajetória comercial se une hoje à construção de
-                software: penso em arquitetura de dados, mas também em quem
-                vai usar o sistema às sete da manhã com o cliente esperando na
-                frente.
+                Além do produto próprio, trabalho com uma segunda trilha de
+                projetos em C#, ASP.NET Core, Clean Architecture, autenticação
+                JWT e Entity Framework Core.
               </p>
             </RevealBlock>
           </div>
