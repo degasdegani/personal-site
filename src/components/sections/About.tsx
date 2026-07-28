@@ -12,16 +12,19 @@ const stats = [
 ];
 
 const stack = [
+  "Next.js",
+  "TypeScript",
+  "React",
+  "Node.js",
+  "PostgreSQL",
+  "Prisma",
+  "Tailwind CSS",
   "C#",
   "ASP.NET Core",
   "SQL Server",
   "Entity Framework",
   "JWT",
   "REST API",
-  "Next.js",
-  "TypeScript",
-  "React",
-  "SignalR",
 ];
 
 const milestones = [
@@ -180,7 +183,7 @@ export function About() {
               Stack
             </span>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {stack.map((tech, index) => (
               <RevealBlock key={index} animation="scaleIn" delay={index * 0.05}>
                 <span className="inline-flex items-center px-4 py-2 rounded-full border border-border text-label text-foreground-dim hover:border-primary/40 hover:text-foreground transition-all duration-300 cursor-default">
