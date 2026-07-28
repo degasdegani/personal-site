@@ -3,8 +3,7 @@ import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { About } from "@/components/sections/About";
 import { Footer } from "@/components/sections/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { Livo } from "@/components/sections/Livo";
-import { Sala } from "@/components/sections/Sala";
+import { Projects } from "@/components/sections/Projects";
 import { IntroLoader } from "@/components/ui/IntroLoader";
 
 // Dados estruturados para o Google (JSON-LD)
@@ -12,15 +11,14 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Eduardo Degani",
-  jobTitle: "Backend Developer & Founder",
+  jobTitle: "Full Stack Developer",
   description:
-    "Backend developer, fundador do Livo e criador da S.A.L.A. Construindo experiências digitais premium no interior de São Paulo.",
+    "Desenvolvedor Full Stack com experiência em C#, ASP.NET Core, SQL Server, Next.js e TypeScript. Portfólio técnico no interior de São Paulo.",
   url: "https://eduardodegani.vercel.app",
   email: "contatodegani@gmail.com",
   sameAs: [
     "https://github.com/degasdegani",
     "https://www.linkedin.com/in/eduardo-degani",
-    "https://www.instagram.com/degani.web",
   ],
   address: {
     "@type": "PostalAddress",
@@ -56,8 +54,7 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <Livo />
-        <Sala />
+        <Projects />
       </main>
 
       <Footer />

@@ -5,10 +5,10 @@ import { SplitText } from "@/components/ui/SplitText";
 
 // ── Dados da seção ─────────────────────────────────────
 const stats = [
-  { value: "5+", label: "Anos em vendas" },
-  { value: "2", label: "Produtos em construção" },
-  { value: "3", label: "Projetos no portfólio" },
-  { value: "1", label: "Missão clara" },
+  { value: "9", label: "Anos em vendas e gestão comercial" },
+  { value: "43", label: "Modelos de dados em produção" },
+  { value: "4", label: "Projetos em destaque" },
+  { value: "200+", label: "Clientes atendidos" },
 ];
 
 const stack = [
@@ -26,28 +26,28 @@ const stack = [
 
 const milestones = [
   {
-    period: "2019 – 2023",
-    title: "Vendas & Gestão de Contas",
+    period: "2016–2019",
+    title: "Vendas & Consórcios",
     description:
-      "Anos construindo relacionamentos, entendendo clientes em profundidade e desenvolvendo visão estratégica de negócio. Uma base que nenhuma faculdade ensina.",
+      "Atendimento consultivo, negociação e gestão de carteira de clientes na Disal Administradora de Consórcios.",
   },
   {
-    period: "2024",
-    title: "Transição Intencional",
+    period: "2020–2024",
+    title: "Marketing Digital & Desenvolvimento Web",
     description:
-      "Decisão consciente de entrar no desenvolvimento de software. Começou pelos fundamentos: lógica, C#, orientação a objetos. Sem atalhos.",
+      "Landing pages e páginas de e-commerce em HTML, CSS e JavaScript, evoluindo a stack para React, Next.js e TypeScript (Digital Red, PJ).",
   },
   {
-    period: "2025",
-    title: "Backend Developer",
+    period: "Abr/2025–Mai/2026",
+    title: "Gerente de Contas — Stone Co.",
     description:
-      "APIs profissionais com ASP.NET Core, autenticação JWT, arquitetura em camadas, SQL Server, Entity Framework. Dois projetos de portfólio no GitHub.",
+      "Gestão de carteira com mais de 200 clientes ativos, implantação e suporte técnico de soluções de pagamento (atuação PJ, simultânea ao desenvolvimento).",
   },
   {
-    period: "Agora",
-    title: "Developer & Founder",
+    period: "Jan/2024–Atual",
+    title: "Desenvolvedor Full Stack Autônomo — S.A.L.A Tecnologia",
     description:
-      "Construindo o Livo e a S.A.L.A. — transformando visão de negócio e habilidade técnica em produtos digitais reais.",
+      "Produto próprio: SaaS multi-tenant com 43 modelos de dados, RBAC de 3 perfis e motor financeiro de comissões.",
   },
 ];
 
@@ -79,12 +79,12 @@ export function About() {
             {/* Headline com SplitText */}
             <h2 className="text-display-lg font-bold mb-8 leading-tight">
               <SplitText
-                text="Da venda"
+                text="Nove anos em vendas e gestão comercial."
                 className="text-gradient block"
                 delay={0.1}
               />
               <SplitText
-                text="ao código."
+                text="Hoje, desenvolvimento full stack em produção."
                 className="text-gradient-red block"
                 delay={0.3}
               />
@@ -93,30 +93,37 @@ export function About() {
             {/* Parágrafos do manifesto */}
             <RevealBlock animation="fadeUp" delay={0.1} className="mb-6">
               <p className="text-body-lg text-foreground-dim leading-relaxed">
-                Passei anos em vendas aprendendo o que nenhum curso técnico
-                ensina: como entender pessoas, identificar problemas reais e
-                construir soluções que geram valor de verdade.
+                Desenvolvedor full stack com produto SaaS próprio em produção —
+                plataforma multi-tenant com 43 modelos de dados, controle de
+                acesso por perfis, motor financeiro de comissões e integração
+                de pagamentos, construída do zero ao deploy.
               </p>
             </RevealBlock>
 
             <RevealBlock animation="fadeUp" delay={0.2} className="mb-6">
               <p className="text-body-md text-subtle leading-relaxed">
-                Em 2024, tomei a decisão mais importante da minha carreira:
-                migrar para o desenvolvimento de software. Não por acidente —
-                por visão. Eu sabia que a combinação de mentalidade comercial
-                com habilidade técnica seria rara e poderosa.
+                Trabalho com desenvolvimento web desde 2020, quando comecei
+                escrevendo landing pages em HTML, CSS e JavaScript para
+                projetos de marketing digital e e-commerce, evoluindo a stack
+                ao longo do tempo para React, Next.js e TypeScript.
               </p>
             </RevealBlock>
 
-            <RevealBlock animation="fadeUp" delay={0.3}>
+            <RevealBlock animation="fadeUp" delay={0.3} className="mb-6">
               <p className="text-body-md text-subtle leading-relaxed">
-                Hoje desenvolvo com{" "}
-                <span className="text-foreground-dim">C# e ASP.NET Core</span>,
-                construo o <span className="text-foreground-dim">Livo</span> —
-                um SaaS real para barbearias — e estruturo a{" "}
-                <span className="text-foreground-dim">S.A.L.A.</span>, minha
-                visão de como entregar experiências digitais premium no interior
-                de São Paulo.
+                Antes de me dedicar integralmente ao desenvolvimento, atuei
+                nove anos em vendas, marketing digital e gestão de carteira de
+                clientes B2B — incluindo mais de 200 clientes ativos geridos
+                em implantação e suporte técnico na Stone.
+              </p>
+            </RevealBlock>
+
+            <RevealBlock animation="fadeUp" delay={0.4}>
+              <p className="text-body-md text-subtle leading-relaxed">
+                Essa trajetória comercial se une hoje à construção de
+                software: penso em arquitetura de dados, mas também em quem
+                vai usar o sistema às sete da manhã com o cliente esperando na
+                frente.
               </p>
             </RevealBlock>
           </div>
@@ -196,27 +203,6 @@ export function About() {
                 </span>
               </RevealBlock>
             ))}
-          </div>
-        </RevealBlock>
-
-        {/* ── Citação final ── */}
-        <RevealBlock animation="fadeUp" delay={0.2} className="mt-24">
-          <div className="border-l-2 border-primary pl-8 max-w-2xl">
-            <p
-              className="text-foreground font-light italic leading-relaxed"
-              style={{ fontSize: "clamp(1.1rem, 2vw, 1.4rem)" }}
-            >
-              &ldquo;Não vim para o desenvolvimento esquecer o que aprendi em
-              vendas. Vim para unir os dois e construir algo que poucos
-              conseguem: produtos que vendem porque são bons, e são bons porque
-              eu entendo quem usa.&rdquo;
-            </p>
-            <div className="flex items-center gap-3 mt-6">
-              <span className="w-6 h-px bg-primary" />
-              <span className="text-label uppercase tracking-widest text-primary">
-                Eduardo Degani
-              </span>
-            </div>
           </div>
         </RevealBlock>
       </div>

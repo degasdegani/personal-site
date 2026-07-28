@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 
-import { MagneticButton } from "@/components/ui/MagneticButton";
 import { RevealBlock } from "@/components/ui/RevealBlock";
 import { SplitText } from "@/components/ui/SplitText";
 import { TextScramble } from "@/components/ui/TextScramble";
@@ -87,7 +86,7 @@ export function Hero() {
                 className="w-10 h-px bg-primary"
               />
               <TextScramble
-                text="DEVELOPER & FOUNDER"
+                text="DESENVOLVEDOR FULL STACK"
                 className="text-label tracking-widest text-primary"
                 delay={0.8}
                 duration={1000}
@@ -128,48 +127,25 @@ export function Hero() {
             </h1>
 
             <RevealBlock animation="fadeUp" delay={0.9} className="mb-5">
-              <p
-                className="text-foreground-dim font-light max-w-md"
-                style={{
-                  fontSize: "clamp(1.1rem, 2.2vw, 1.45rem)",
-                  lineHeight: 1.3,
-                }}
-              >
-                Construindo o futuro digital do interior de{" "}
-                <span className="text-foreground">São Paulo</span>.
+              <p className="flex items-center gap-2 text-body-md text-foreground-dim">
+                <span aria-hidden>📍</span>
+                Ribeirão Preto, SP
               </p>
             </RevealBlock>
 
-            <RevealBlock animation="fadeUp" delay={1.1} className="mb-12">
+            <RevealBlock animation="fadeUp" delay={1.1}>
               <p className="text-body-md text-subtle max-w-sm leading-relaxed">
-                Backend developer, fundador do{" "}
-                <span className="text-foreground-dim">Livo</span> e criador da{" "}
-                <span className="text-foreground-dim">S.A.L.A.</span> —
-                experiências digitais que impressionam.
+                Desenvolvo com{" "}
+                <span className="text-foreground-dim">
+                  C# e ASP.NET Core
+                </span>{" "}
+                no backend e{" "}
+                <span className="text-foreground-dim">
+                  Next.js, TypeScript e React
+                </span>{" "}
+                no frontend. Vim das vendas para o desenvolvimento em 2024 e
+                venho construindo projetos reais desde então.
               </p>
-            </RevealBlock>
-
-            <RevealBlock animation="fadeUp" delay={1.3}>
-              <div className="flex items-center gap-4 flex-wrap">
-                <MagneticButton>
-                  <motion.a
-                    href="#livo"
-                    whileTap={{ scale: 0.96 }}
-                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-white text-label uppercase tracking-widest hover:bg-primary/85 transition-colors duration-300"
-                  >
-                    Ver projetos <span className="opacity-60">→</span>
-                  </motion.a>
-                </MagneticButton>
-                <MagneticButton>
-                  <motion.a
-                    href="#sala"
-                    whileTap={{ scale: 0.96 }}
-                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-border text-foreground-dim text-label uppercase tracking-widest hover:border-primary/50 hover:text-foreground transition-all duration-300"
-                  >
-                    S.A.L.A.
-                  </motion.a>
-                </MagneticButton>
-              </div>
             </RevealBlock>
           </motion.div>
 
@@ -184,7 +160,7 @@ export function Hero() {
                 <div className="relative w-72 h-[26rem] lg:w-80 lg:h-[30rem] rounded-3xl overflow-hidden border border-border/60">
                   <Image
                     src="/foto.jpg"
-                    alt="Foto de Eduardo Degani — Developer e Founder"
+                    alt="Foto de Eduardo Degani — Desenvolvedor Full Stack"
                     fill
                     priority
                     className="object-cover object-top"
@@ -207,38 +183,6 @@ export function Hero() {
                     </div>
                   </div>
                 </div>
-
-                <motion.div
-                  animate={{ y: [0, -7, 0] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute -bottom-6 -left-10 bg-surface/90 border border-border rounded-2xl px-4 py-2.5 backdrop-blur-md"
-                >
-                  <p className="text-label text-foreground-dim uppercase tracking-widest">
-                    📍 Ribeirão Preto, SP
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  animate={{ y: [0, 7, 0] }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1.2,
-                  }}
-                  className="absolute -top-6 -right-10 bg-surface/90 border border-border rounded-2xl px-4 py-2.5 backdrop-blur-md"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    <p className="text-label text-foreground-dim uppercase tracking-widest">
-                      Disponível
-                    </p>
-                  </div>
-                </motion.div>
               </div>
             </RevealBlock>
           </motion.div>

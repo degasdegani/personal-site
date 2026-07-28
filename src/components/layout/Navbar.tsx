@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export function Navbar() {
@@ -28,9 +29,8 @@ export function Navbar() {
   }, [lastScrollY]);
 
   const links = [
-    { label: "Sobre", href: "#sobre" },
-    { label: "Livo", href: "#livo" },
-    { label: "S.A.L.A.", href: "#sala" },
+    { label: "Sobre", href: "/#sobre" },
+    { label: "Projetos", href: "/#projetos" },
   ];
 
   const headerClass = scrolled
@@ -49,22 +49,22 @@ export function Navbar() {
         >
           <div className="container-site">
             <div className="flex items-center justify-between h-16">
-              <a
-                href="#"
+              <Link
+                href="/"
                 className="text-label font-mono uppercase tracking-widest text-foreground hover:text-primary transition-colors duration-300"
               >
                 ED
-              </a>
+              </Link>
 
               <nav className="flex items-center gap-8">
                 {links.map((link) => (
-                  <a
+                  <Link
                     key={link.href}
                     href={link.href}
                     className="text-label uppercase tracking-widest text-subtle hover:text-foreground transition-colors duration-300"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>

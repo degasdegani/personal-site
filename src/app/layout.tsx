@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Eduardo Degani — Developer & Founder",
+  title: "Eduardo Degani — Full Stack Developer",
   description:
-    "Backend developer, fundador do Livo e criador da S.A.L.A. Construindo experiências digitais premium no interior de São Paulo.",
+    "Desenvolvedor Full Stack com experiência em C#, ASP.NET Core, SQL Server, Next.js e TypeScript. Portfólio técnico no interior de São Paulo.",
   keywords: [
     "Eduardo Degani",
     "developer",
@@ -21,27 +21,26 @@ export const metadata: Metadata = {
     "ASP.NET Core",
     "Next.js",
     "Livo",
-    "SALA",
     "Ribeirão Preto",
     "São Paulo",
-    "SaaS",
-    "landing page",
+    "portfólio",
   ],
   authors: [{ name: "Eduardo Degani", url: "https://github.com/degasdegani" }],
   creator: "Eduardo Degani",
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    title: "Eduardo Degani — Developer & Founder",
+    title: "Eduardo Degani — Full Stack Developer",
     description:
-      "Backend developer, fundador do Livo e criador da S.A.L.A. Experiências digitais premium no interior de SP.",
+      "Desenvolvedor Full Stack com experiência em C#, ASP.NET Core, SQL Server, Next.js e TypeScript.",
     siteName: "Eduardo Degani",
     url: "https://eduardodegani.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Eduardo Degani — Developer & Founder",
-    description: "Backend developer, fundador do Livo e criador da S.A.L.A.",
+    title: "Eduardo Degani — Full Stack Developer",
+    description:
+      "Desenvolvedor Full Stack com experiência em C#, ASP.NET Core, SQL Server, Next.js e TypeScript.",
     creator: "@degani",
   },
   robots: {

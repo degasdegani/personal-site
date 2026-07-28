@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 const socialLinks = [
   { label: "GitHub", href: "https://github.com/degasdegani" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/eduardo-degani" },
-  { label: "Instagram", href: "https://www.instagram.com/degani.web" },
 ];
 
 export function Footer() {
@@ -25,7 +24,7 @@ export function Footer() {
             </span>
             <span className="w-1 h-1 rounded-full bg-muted" />
             <span className="text-label text-muted uppercase tracking-widest">
-              Developer &amp; Founder
+              Full Stack Developer
             </span>
           </div>
 
