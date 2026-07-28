@@ -126,6 +126,99 @@ export function ProjectDetail({ project, heroVisual }: ProjectDetailProps) {
           </div>
         </RevealBlock>
 
+        {/* 3b. Decisões Técnicas */}
+        {project.decisions && (
+          <RevealBlock animation="fadeUp" className="mb-24">
+            <div className="flex items-center gap-4 mb-8">
+              <span className="w-6 h-px bg-border" />
+              <span className="text-label uppercase tracking-widest text-subtle">
+                Decisões Técnicas
+              </span>
+            </div>
+            <div className="space-y-6">
+              {project.decisions.map((decision, i) => (
+                <RevealBlock key={decision.title} animation="fadeUp" delay={i * 0.05}>
+                  <GlowCard glow="red" padding="p-6 md:p-8">
+                    <h3 className="text-foreground font-semibold text-lg mb-5">
+                      {decision.title}
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <p className="text-label uppercase tracking-widest text-primary mb-2">
+                          Problema
+                        </p>
+                        <p className="text-body-md text-foreground-dim leading-relaxed">
+                          {decision.problem}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-label uppercase tracking-widest text-primary mb-2">
+                          Solução
+                        </p>
+                        <p className="text-body-md text-foreground-dim leading-relaxed">
+                          {decision.solution}
+                        </p>
+                      </div>
+                    </div>
+                    {decision.tradeoff && (
+                      <div className="mt-6 pl-4 border-l-2 border-border">
+                        <p className="text-label uppercase tracking-widest text-muted mb-1">
+                          Trade-off
+                        </p>
+                        <p className="text-sm text-muted leading-relaxed">
+                          {decision.tradeoff}
+                        </p>
+                      </div>
+                    )}
+                  </GlowCard>
+                </RevealBlock>
+              ))}
+            </div>
+          </RevealBlock>
+        )}
+
+        {/* 3c. Módulos */}
+        {project.modules && (
+          <RevealBlock animation="fadeUp" className="mb-24">
+            <div className="flex items-center gap-4 mb-8">
+              <span className="w-6 h-px bg-border" />
+              <span className="text-label uppercase tracking-widest text-subtle">
+                Módulos
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {project.modules.map((module, i) => (
+                <RevealBlock key={module} animation="scaleIn" delay={i * 0.05}>
+                  <span className="inline-flex items-center px-4 py-2 rounded-full border border-border text-label text-foreground-dim">
+                    {module}
+                  </span>
+                </RevealBlock>
+              ))}
+            </div>
+          </RevealBlock>
+        )}
+
+        {/* 3d. Padrões de Projeto */}
+        {project.patterns && (
+          <RevealBlock animation="fadeUp" className="mb-24">
+            <div className="flex items-center gap-4 mb-8">
+              <span className="w-6 h-px bg-border" />
+              <span className="text-label uppercase tracking-widest text-subtle">
+                Padrões de Projeto
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {project.patterns.map((pattern, i) => (
+                <RevealBlock key={pattern} animation="scaleIn" delay={i * 0.05}>
+                  <span className="inline-flex items-center px-4 py-2 rounded-full border border-primary/30 text-label text-primary">
+                    {pattern}
+                  </span>
+                </RevealBlock>
+              ))}
+            </div>
+          </RevealBlock>
+        )}
+
         {/* 4. Desafio técnico + solução */}
         <RevealBlock animation="fadeUp" className="mb-24">
           <div className="flex items-center gap-4 mb-8">

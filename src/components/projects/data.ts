@@ -12,6 +12,14 @@ export interface Project {
     problem: string;
     solution: string;
   };
+  decisions?: {
+    title: string;
+    problem: string;
+    solution: string;
+    tradeoff?: string;
+  }[];
+  modules?: string[];
+  patterns?: string[];
   screenshots: number | string[];
 }
 
@@ -62,6 +70,57 @@ export const projects: Project[] = [
       solution:
         "As notificações em tempo real foram arquitetadas sobre os canais já existentes na aplicação, sem contratar um serviço de push adicional — o mesmo comportamento de tempo real, sem custo incremental por mensagem nem nova peça de infraestrutura para operar.",
     },
+    decisions: [
+      {
+        title: "Isolamento multi-tenant por linha, validado nos dois sentidos",
+        problem:
+          "Todo registro carrega o identificador do estabelecimento, e o filtro precisa ser aplicado tanto na leitura quanto na escrita — filtrar apenas a consulta protege contra vazamento, mas não impede que uma requisição forjada altere o registro de outro tenant.",
+        solution:
+          "Durante uma revisão do próprio código, foi identificada uma rota de escrita sem o filtro de escopo, e corrigida. Isso levou a padronizar a validação nos dois sentidos.",
+        tradeoff:
+          "Alternativa descartada: banco de dados isolado por tenant. Resolveria o isolamento por construção, mas multiplicaria o custo de infraestrutura e migração por cliente — inviável para um produto vendido a partir de R$ 59,90/mês.",
+      },
+      {
+        title: "Comissão modelada como conta a pagar, não como saída de caixa",
+        problem:
+          "O primeiro modelo tratava a comissão do profissional como despesa lançada no atendimento, produzindo um relatório financeiro errado: o caixa aparecia reduzido por um valor que ainda não tinha saído.",
+        solution:
+          "A comissão passou a ser um passivo — gerada no atendimento, mas só afeta o caixa quando o pagamento ao profissional é efetivamente confirmado. O sistema suporta dois modos de liquidação, parcial e total, com conciliação automática.",
+        tradeoff:
+          "Aprendizado: modelar o domínio financeiro exige entender contabilidade básica antes de escrever a primeira migration — refatorar depois custa caro porque dados históricos já foram gravados no formato errado.",
+      },
+      {
+        title: "Precisão decimal exata em todo o pipeline monetário",
+        problem:
+          "Valores monetários em ponto flutuante acumulam erro de arredondamento que, num fechamento mensal, aparece como centavos que ninguém consegue explicar.",
+        solution:
+          "Valores monetários trafegam como string decimal e são convertidos apenas nas fronteiras do sistema.",
+      },
+      {
+        title: "Notificações push sem custo adicional de infraestrutura",
+        problem:
+          "Profissionais precisam saber de um novo agendamento em tempo real, mas WebSocket ou um serviço gerenciado de push adicionam custo fixo mensal a um produto ainda validando receita.",
+        solution:
+          "Implementado com Web Push nativo, contornando o limite de execução de cron do plano de hospedagem através de um disparador externo com intervalo curto.",
+        tradeoff:
+          "Trade-off assumido: latência de até alguns minutos em vez de instantânea — aceitável para o estágio atual do produto, e revisável quando a receita justificar a troca.",
+      },
+    ],
+    modules: [
+      "Agenda",
+      "Comanda",
+      "Clientes",
+      "Profissionais",
+      "Produtos e Estoque",
+      "Financeiro",
+      "Assinaturas",
+      "Relatórios",
+    ],
+    patterns: [
+      "Row-level multi-tenancy",
+      "RBAC por papel",
+      "Server Actions + Route Handlers",
+    ],
     screenshots: 2,
   },
   {
@@ -99,6 +158,48 @@ export const projects: Project[] = [
       solution:
         "A conciliação automática foi desenhada para tratar os dois modos de liquidação sobre a mesma base financeira herdada do Livo, mantendo um único fluxo de conciliação em vez de dois códigos paralelos.",
     },
+    decisions: [
+      {
+        title: "O repasse ao profissional é um passivo, não uma despesa de caixa",
+        problem:
+          "Quando um atendimento é fechado, tratar a comissão da profissional como saída imediata faz o relatório mostrar o salão com menos dinheiro do que realmente tem em caixa.",
+        solution:
+          "A comissão passa a existir como conta a pagar, afetando o caixa só quando o repasse é efetivamente confirmado. O sistema suporta dois modos de liquidação — parcial e total — com conciliação automática.",
+      },
+      {
+        title: "Isolamento multi-tenant por linha, validado em leitura e escrita",
+        problem:
+          "Filtrar apenas a leitura protege contra vazamento, mas deixa passar escrita forjada em registro de outro tenant.",
+        solution:
+          "Durante revisão do próprio código foi encontrado exatamente esse caso — uma rota de escrita sem filtro de escopo — e a correção virou padrão: nenhuma operação chega ao ORM sem passar por sessão, papel e tenant.",
+      },
+      {
+        title: "Reaproveitamento real da arquitetura entre verticais",
+        problem:
+          "Duplicar a base inteira para um segundo produto multiplicaria o esforço de manutenção.",
+        solution:
+          "O Livo Beauty não é um fork do Livo Barber: as regras de domínio que mudam entre os segmentos (modelo de comissão, tipos de serviço, fluxo de atendimento) foram isoladas da fundação comum de autenticação, tenant, agenda e financeiro.",
+      },
+      {
+        title: "Notificação em tempo real sem custo adicional de infraestrutura",
+        problem:
+          "A profissional precisa saber do agendamento no momento em que ele acontece, mas WebSocket ou serviço gerenciado de push adicionam custo fixo mensal.",
+        solution:
+          "Implementado com Web Push nativo em PWA instalável, contornando o limite de cron do plano de hospedagem via disparador externo.",
+        tradeoff:
+          "Trade-off assumido: latência de poucos minutos em vez de instantânea — aceitável para agendamento, revisável quando a receita justificar.",
+      },
+    ],
+    modules: [
+      "Fundação e Autenticação",
+      "Profissionais e Serviços",
+      "Agenda",
+      "Clientes",
+      "Produtos e Estoque",
+      "Financeiro",
+      "Relatórios",
+    ],
+    patterns: ["Row-level multi-tenancy", "RBAC de 3 papéis", "PWA instalável"],
     screenshots: 2,
   },
   {
@@ -132,6 +233,25 @@ export const projects: Project[] = [
       solution:
         "Separação estrita entre domínio, aplicação e infraestrutura na Clean Architecture, com Entity Framework Core e SQL Server isolados na camada de infraestrutura e execução containerizada via Docker, sem vazar detalhes de persistência para o domínio.",
     },
+    modules: [
+      "Autenticação JWT com perfis (Admin, Manager, Seller)",
+      "Clientes",
+      "Fornecedores",
+      "Categorias",
+      "Produtos com SKU e alerta de estoque mínimo",
+      "Pedidos com baixa automática de estoque",
+      "Pagamentos com confirmação automática",
+      "Movimentação de estoque com histórico",
+      "Dashboard gerencial",
+    ],
+    patterns: [
+      "Repository Pattern",
+      "Unit of Work",
+      "DTO Pattern",
+      "Global Exception Middleware",
+      "Soft Delete",
+      "Fluent API",
+    ],
     screenshots: [
       "https://github.com/degasdegani/OrderFlow/raw/main/docs/screenshots/13-dashboard.png",
       "https://github.com/degasdegani/OrderFlow/raw/main/docs/screenshots/01-auth.png",
@@ -163,6 +283,16 @@ export const projects: Project[] = [
       solution:
         "O ciclo completo foi modelado como um fluxo de estados dentro do mesmo domínio MVC, com cada etapa (orçamento → aprovação → faturamento → recebimento) dependendo do estado anterior, em vez de telas independentes sem relação entre si.",
     },
+    modules: [
+      "Autenticação com ASP.NET Core Identity",
+      "Dashboard financeiro",
+      "Clientes",
+      "Produtos e Serviços",
+      "Orçamentos com cálculo automático",
+      "Faturas com controle de status",
+      "Conversão de orçamento aprovado em fatura",
+    ],
+    patterns: ["Multi-usuário com escopo por usuário", "Repository via EF Core"],
     screenshots: [
       "https://github.com/degasdegani/InvoicePro/raw/main/docs/images/01-dashboard.png",
       "https://github.com/degasdegani/InvoicePro/raw/main/docs/images/03-orcamentos.png",
