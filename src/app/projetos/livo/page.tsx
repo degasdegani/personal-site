@@ -9,6 +9,12 @@ const project = getProject("livo")!;
 export const metadata: Metadata = {
   title: `${project.name} — Eduardo Degani`,
   description: project.tagline,
+  openGraph: {
+    title: `${project.name} — Eduardo Degani`,
+    description: project.tagline,
+    url: `https://eduardodegani.vercel.app/projetos/${project.slug}`,
+    type: "article",
+  },
 };
 
 export default function LivoProjectPage() {
