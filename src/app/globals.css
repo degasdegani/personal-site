@@ -24,7 +24,6 @@
   body {
     min-height: 100dvh;
     overflow-x: hidden;
-    cursor: none;
   }
 
   /* Scrollbar fina e elegante */
@@ -39,12 +38,12 @@
     border-radius: 2px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #e63232;
+    background: #6b94be;
   }
 
   /* Seleção de texto */
   ::selection {
-    background: rgba(230, 50, 50, 0.25);
+    background: rgba(107, 148, 190, 0.25);
     color: #f0f0f0;
   }
 }
@@ -60,7 +59,7 @@
   }
 
   .text-gradient-red {
-    background: linear-gradient(135deg, #e63232 0%, #ff8080 60%, #ffaaaa 100%);
+    background: linear-gradient(135deg, #6b94be 0%, #a6bfd8 60%, #cbdae8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -71,48 +70,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  }
-
-  /* Glow effects */
-  .glow-red {
-    box-shadow:
-      0 0 40px rgba(230, 50, 50, 0.2),
-      0 0 80px rgba(230, 50, 50, 0.08),
-      0 0 160px rgba(230, 50, 50, 0.04);
-  }
-
-  .glow-red-strong {
-    box-shadow:
-      0 0 20px rgba(230, 50, 50, 0.4),
-      0 0 60px rgba(230, 50, 50, 0.2),
-      0 0 120px rgba(230, 50, 50, 0.1);
-  }
-
-  .glow-white {
-    box-shadow:
-      0 0 40px rgba(255, 255, 255, 0.06),
-      0 0 80px rgba(255, 255, 255, 0.02);
-  }
-
-  /* Bordas com gradiente */
-  .border-gradient {
-    border: 1px solid transparent;
-    background:
-      linear-gradient(#111111, #111111) padding-box,
-      linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.1),
-          rgba(255, 255, 255, 0.02)
-        )
-        border-box;
-  }
-
-  .border-gradient-red {
-    border: 1px solid transparent;
-    background:
-      linear-gradient(#111111, #111111) padding-box,
-      linear-gradient(135deg, rgba(230, 50, 50, 0.4), rgba(230, 50, 50, 0.05))
-        border-box;
   }
 
   /* Texture de noise sutil */

@@ -1,4 +1,3 @@
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import { LenisProvider } from "@/lib/lenis";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -63,11 +62,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={inter.variable}>
-      <body className="bg-background text-foreground font-sans antialiased overflow-x-hidden cursor-none">
-        <LenisProvider>
-          <CustomCursor />
-          {children}
-        </LenisProvider>
+      <body className="bg-background text-foreground font-sans antialiased overflow-x-hidden">
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );

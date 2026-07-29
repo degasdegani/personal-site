@@ -1,11 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import { GlowCard } from "@/components/ui/GlowCard";
 import type { Project } from "@/components/projects/data";
 
 export function ProjectCard({ project }: { project: Project }) {
+  const thumbnailUrl = Array.isArray(project.screenshots)
+    ? project.screenshots[0]
+    : null;
+
   return (
     <GlowCard glow="red" padding="p-0" className="h-full">
       <div className="flex flex-col h-full overflow-hidden rounded-2xl">
@@ -16,11 +21,23 @@ export function ProjectCard({ project }: { project: Project }) {
             <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
             <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
           </div>
-          <div className="h-36 flex items-center justify-center bg-gradient-to-br from-primary/12 via-surface to-transparent">
-            <span className="text-4xl font-bold text-gradient-red">
-              {project.name.charAt(0)}
-            </span>
-          </div>
+          {thumbnailUrl ? (
+            <div className="relative h-36">
+              <Image
+                src={thumbnailUrl}
+                alt={`${project.name} — captura de tela`}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              />
+            </div>
+          ) : (
+            <div className="h-36 flex items-center justify-center bg-gradient-to-br from-primary/12 via-surface to-transparent">
+              <span className="text-4xl font-bold text-gradient-red">
+                {project.name.charAt(0)}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Conteúdo */}

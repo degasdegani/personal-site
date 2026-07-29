@@ -102,7 +102,7 @@ export function Hero() {
 
             <h1
               className="font-bold mb-8"
-              style={{ letterSpacing: "-0.04em", lineHeight: 1 }}
+              style={{ letterSpacing: "-0.04em", lineHeight: 1.15 }}
             >
               <span
                 className="block"
@@ -125,6 +125,12 @@ export function Hero() {
                 />
               </span>
             </h1>
+
+            <RevealBlock animation="fadeUp" delay={0.8} className="mb-6">
+              <p className="text-body-md text-subtle">
+                Eduardo Degani Malvestio Moraes
+              </p>
+            </RevealBlock>
 
             <RevealBlock animation="fadeUp" delay={0.9} className="mb-5">
               <p className="flex items-center gap-2 text-body-md text-foreground-dim">
