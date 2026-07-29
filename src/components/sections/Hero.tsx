@@ -165,7 +165,7 @@ export function Hero() {
                 <div className="absolute inset-0 bg-primary/25 rounded-3xl blur-3xl scale-110 animate-glow-pulse" />
                 <div className="relative w-72 h-[26rem] lg:w-80 lg:h-[30rem] rounded-3xl overflow-hidden border border-border/60">
                   <Image
-                    src="/foto.jpg"
+                    src="/foto.png"
                     alt="Foto de Eduardo Degani — Desenvolvedor Full Stack"
                     fill
                     priority
@@ -184,7 +184,7 @@ export function Hero() {
                         Adicione sua foto
                       </p>
                       <p className="text-label text-muted mt-1 font-mono">
-                        /public/foto.jpg
+                        /public/foto.png
                       </p>
                     </div>
                   </div>

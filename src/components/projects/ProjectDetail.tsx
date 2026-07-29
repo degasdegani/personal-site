@@ -1,4 +1,7 @@
+"use client";
+
 import type { ReactNode } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,6 +24,20 @@ export function ProjectDetail({ project, heroVisual }: ProjectDetailProps) {
   const placeholderCount = Array.isArray(project.screenshots)
     ? 0
     : project.screenshots;
+
+  const totalScreenshotItems =
+    (heroVisual ? 1 : 0) + (screenshotUrls ? screenshotUrls.length : placeholderCount);
+
+  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!lightboxUrl) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxUrl(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [lightboxUrl]);
 
   return (
     <div className="relative">
@@ -260,7 +277,13 @@ export function ProjectDetail({ project, heroVisual }: ProjectDetailProps) {
               Capturas de tela
             </span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            className={
+              totalScreenshotItems === 1
+                ? "grid grid-cols-1 gap-6"
+                : "grid grid-cols-1 md:grid-cols-2 gap-6"
+            }
+          >
             {heroVisual && (
               <RevealBlock animation="scaleIn">
                 <div className="h-full flex items-center">{heroVisual}</div>
@@ -269,7 +292,12 @@ export function ProjectDetail({ project, heroVisual }: ProjectDetailProps) {
             {screenshotUrls
               ? screenshotUrls.map((url, i) => (
                   <RevealBlock key={url} animation="scaleIn" delay={i * 0.05}>
-                    <div className="relative aspect-video rounded-2xl border border-border overflow-hidden bg-surface">
+                    <button
+                      type="button"
+                      onClick={() => setLightboxUrl(url)}
+                      aria-label={`Ampliar captura de tela ${i + 1} de ${project.name}`}
+                      className="relative aspect-video w-full rounded-2xl border border-border overflow-hidden bg-surface cursor-pointer hover:border-primary/30 transition-colors duration-300"
+                    >
                       <Image
                         src={url}
                         alt={`${project.name} — captura de tela ${i + 1}`}
@@ -277,7 +305,7 @@ export function ProjectDetail({ project, heroVisual }: ProjectDetailProps) {
                         className="object-cover"
                         sizes="(min-width: 768px) 50vw, 100vw"
                       />
-                    </div>
+                    </button>
                   </RevealBlock>
                 ))
               : Array.from({ length: placeholderCount }).map((_, i) => (
@@ -292,6 +320,37 @@ export function ProjectDetail({ project, heroVisual }: ProjectDetailProps) {
           </div>
         </RevealBlock>
       </div>
+
+      {/* Lightbox */}
+      {lightboxUrl && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setLightboxUrl(null)}
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 p-6 md:p-12"
+        >
+          <button
+            type="button"
+            onClick={() => setLightboxUrl(null)}
+            aria-label="Fechar"
+            className="absolute top-6 right-6 w-10 h-10 rounded-full border border-white/20 text-white flex items-center justify-center hover:border-white/50 transition-colors duration-300"
+          >
+            <span aria-hidden>✕</span>
+          </button>
+          <div
+            className="relative w-full h-full max-w-5xl max-h-[85vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={lightboxUrl}
+              alt={`${project.name} — captura de tela ampliada`}
+              fill
+              className="object-contain"
+              sizes="90vw"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

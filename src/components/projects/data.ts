@@ -121,7 +121,11 @@ export const projects: Project[] = [
       "RBAC por papel",
       "Server Actions + Route Handlers",
     ],
-    screenshots: 2,
+    screenshots: [
+      "/images/projects/livo-barber-dashboard.png",
+      "/images/projects/livo-barber-agenda.png",
+      "/images/projects/livo-barber-relatorios.png",
+    ],
   },
   {
     slug: "livo-beauty",
@@ -200,7 +204,7 @@ export const projects: Project[] = [
       "Relatórios",
     ],
     patterns: ["Row-level multi-tenancy", "RBAC de 3 papéis", "PWA instalável"],
-    screenshots: 2,
+    screenshots: ["/images/projects/livo-beauty-dashboard.png"],
   },
   {
     slug: "orderflow",

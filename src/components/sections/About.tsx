@@ -44,7 +44,7 @@ const milestones = [
     period: "Abr/2025–Mai/2026",
     title: "Gerente de Contas — Stone Co.",
     description:
-      "Gestão de carteira com mais de 200 clientes ativos, implantação e suporte técnico de soluções de pagamento (atuação PJ, simultânea ao desenvolvimento).",
+      "Gestão de carteira com mais de 200 clientes ativos, implantação e suporte técnico de soluções de pagamento.",
   },
   {
     period: "Jan/2024–Atual",
