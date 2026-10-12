@@ -5,10 +5,10 @@ import { SplitText } from "@/components/ui/SplitText";
 
 // ── Dados da seção ─────────────────────────────────────
 const stats = [
-  { value: "9", label: "Anos em vendas e gestão comercial" },
+  { value: "5", label: "Anos de experiência em desenvolvimento" },
   { value: "43", label: "Modelos de dados em produção" },
+  { value: "2", label: "Ecossistemas: JavaScript/TypeScript e .NET" },
   { value: "4", label: "Projetos em destaque" },
-  { value: "200+", label: "Clientes atendidos" },
 ];
 
 const stack = [
@@ -29,28 +29,28 @@ const stack = [
 
 const milestones = [
   {
-    period: "2016–2019",
-    title: "Vendas & Consórcios",
+    period: "Jan/2024–Atual",
+    title: "Desenvolvedor Full Stack — S.A.L.A Tecnologia",
     description:
-      "Atendimento consultivo, negociação e gestão de carteira de clientes na Disal Administradora de Consórcios.",
-  },
-  {
-    period: "2020–2024",
-    title: "Marketing Digital & Desenvolvimento Web",
-    description:
-      "Landing pages e páginas de e-commerce em HTML, CSS e JavaScript, evoluindo a stack para React, Next.js e TypeScript (Digital Red, PJ).",
+      "Projeto e mantenho em produção plataformas SaaS multi-tenant, com 43 modelos de dados, isolamento por linha, RBAC de 3 perfis e motor financeiro de comissões. Construo sites e landing pages para clientes de diferentes segmentos, como vidraçaria, arquitetura e design de interiores e consultoria de viagens, com deploy contínuo na Vercel.",
   },
   {
     period: "Abr/2025–Mai/2026",
-    title: "Gerente de Contas — Stone Co.",
+    title: "Gerente de Contas, Implantação e Suporte Técnico — Stone Co.",
     description:
-      "Gestão de carteira com mais de 200 clientes ativos, implantação e suporte técnico de soluções de pagamento.",
+      "Implantação e configuração de soluções tecnológicas de pagamento, diagnóstico e resolução de incidentes em produção e tradução de necessidades de negócio em requisitos técnicos, como interface entre cliente, time técnico e operação.",
   },
   {
-    period: "Jan/2024–Atual",
-    title: "Desenvolvedor Full Stack Autônomo — S.A.L.A Tecnologia",
+    period: "Fev/2020–Fev/2024",
+    title: "Desenvolvedor Web Júnior — Digital Red",
     description:
-      "Produto próprio: SaaS multi-tenant com 43 modelos de dados, RBAC de 3 perfis e motor financeiro de comissões.",
+      "Sites e lojas virtuais em Shopify e landing pages de alta conversão com HTML5, CSS3 e JavaScript, integrações com Mercado Pago, WhatsApp e CRM, analytics e Google Ads. Evolução da stack para React, Next.js e TypeScript, com SEO técnico e boas práticas de front-end.",
+  },
+  {
+    period: "Mar/2016–Nov/2019",
+    title: "Consultor de Vendas — Disal Administradora de Consórcios",
+    description:
+      "Atendimento consultivo e gestão de carteira de clientes, com acompanhamento de indicadores.",
   },
 ];
 
@@ -91,27 +91,31 @@ export function About() {
             {/* Parágrafos do manifesto */}
             <RevealBlock animation="fadeUp" delay={0.1} className="mb-6">
               <p className="text-body-lg text-foreground-dim leading-relaxed">
-                Desenvolvedor full stack com produto SaaS próprio em produção —
-                plataforma multi-tenant com 43 modelos de dados, controle de
-                acesso por perfis, motor financeiro de comissões e integração
-                de pagamentos, construída do zero ao deploy.
+                Desenvolvedor Full Stack com 5 anos de experiência em
+                desenvolvimento, atuando em diferentes stacks (Next.js, React,
+                TypeScript e Node.js no ecossistema JavaScript; C# e ASP.NET
+                Core no .NET) e entrega de ponta a ponta: do requisito ao
+                deploy, de landing pages e sites a plataformas SaaS
+                multi-tenant em produção, com controle de acesso por perfis,
+                motor financeiro e integração de pagamentos.
               </p>
             </RevealBlock>
 
             <RevealBlock animation="fadeUp" delay={0.2} className="mb-6">
               <p className="text-body-md text-subtle leading-relaxed">
-                Trabalho com desenvolvimento web desde 2020, quando comecei
-                escrevendo landing pages em HTML, CSS e JavaScript para
-                projetos de marketing digital e e-commerce, evoluindo a stack
-                ao longo do tempo para React, Next.js e TypeScript.
+                Na S.A.L.A Tecnologia desenvolvo sistemas e sites para clientes
+                e opero produtos próprios (LIVO Barber e LIVO Beauty). Trabalho
+                com bancos relacionais (PostgreSQL e SQL Server), testes
+                automatizados e monitoramento em produção.
               </p>
             </RevealBlock>
 
             <RevealBlock animation="fadeUp" delay={0.3}>
               <p className="text-body-md text-subtle leading-relaxed">
-                Além do produto próprio, trabalho com uma segunda trilha de
-                projetos em C#, ASP.NET Core, Clean Architecture, autenticação
-                JWT e Entity Framework Core.
+                Trabalho com desenvolvimento web desde 2020, quando comecei
+                escrevendo landing pages em HTML, CSS e JavaScript para
+                projetos de marketing digital e e-commerce, evoluindo a stack
+                ao longo do tempo para React, Next.js e TypeScript.
               </p>
             </RevealBlock>
           </div>

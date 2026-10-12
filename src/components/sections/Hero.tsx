@@ -141,16 +141,10 @@ export function Hero() {
 
             <RevealBlock animation="fadeUp" delay={1.1}>
               <p className="text-body-md text-subtle max-w-sm leading-relaxed">
-                Desenvolvo com{" "}
-                <span className="text-foreground-dim">
-                  C# e ASP.NET Core
-                </span>{" "}
-                no backend e{" "}
-                <span className="text-foreground-dim">
-                  Next.js, TypeScript e React
-                </span>{" "}
-                no frontend. Vim das vendas para o desenvolvimento em 2024 e
-                venho construindo projetos reais desde então.
+                Desenvolvedor Full Stack com 5 anos de experiência, atuando com
+                Next.js, React, TypeScript e Node.js e com C# e ASP.NET Core.
+                Entrega de ponta a ponta, do requisito ao deploy, de sites a
+                plataformas SaaS multi-tenant em produção.
               </p>
             </RevealBlock>
           </motion.div>
