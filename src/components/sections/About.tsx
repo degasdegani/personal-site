@@ -36,9 +36,9 @@ const milestones = [
   },
   {
     period: "Abr/2025–Mai/2026",
-    title: "Gerente de Contas, Implantação e Suporte Técnico — Stone Co.",
+    title: "Gerente de Contas, Suporte Técnico N1/N2 e Implantação — Stone Co.",
     description:
-      "Implantação e configuração de soluções tecnológicas de pagamento, diagnóstico e resolução de incidentes em produção e tradução de necessidades de negócio em requisitos técnicos, como interface entre cliente, time técnico e operação.",
+      "Suporte técnico N1 e N2 e implantação de sistemas em soluções de pagamento: análise de erros, logs, permissões e configurações, consultas a banco de dados e identificação da causa raiz. Responsável único pela região, com apoio à migração de dados e integrações e treinamento de usuários. Carteira de mais de 200 clientes ativos.",
   },
   {
     period: "Fev/2020–Fev/2024",
